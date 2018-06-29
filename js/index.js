@@ -311,7 +311,6 @@ var Game = {
             }
             this.currentShape.style[attr] = target + 'px';
             if (this.isBump()) {
-                console.log("b");
                 this.currentShape.style[attr] = this.currentShape[offset] - json[attr] + 'px';
             }
             if(attr == "top"){
@@ -418,7 +417,7 @@ var Game = {
             ],
             rows: 2,
             cols: 3,
-            bg: "url(S.png) 100% 100% no-repeat",
+            bg: "url(images/S.png) 100% 100% no-repeat",
         },
         {
             type: 'Z',
@@ -428,7 +427,7 @@ var Game = {
             ],
             rows: 2,
             cols: 3,
-            bg: "url(Z.png) 100% 100% no-repeat",
+            bg: "url(images/Z.png) 100% 100% no-repeat",
         },
         {
             type: 'L',
@@ -439,7 +438,7 @@ var Game = {
             ],
             rows: 3,
             cols: 2,
-            bg: "url(L.png) 100% 100% no-repeat",
+            bg: "url(images/L.png) 100% 100% no-repeat",
         },
         {
             type: 'J',
@@ -450,7 +449,7 @@ var Game = {
             ],
             rows: 3,
             cols: 2,
-            bg: "url(J.png) 100% 100% no-repeat",
+            bg: "url(images/J.png) 100% 100% no-repeat",
         },
         {
             type: 'I',
@@ -462,7 +461,7 @@ var Game = {
             ],
             rows: 4,
             cols: 1,
-            bg: "url(I.png) 100% 100% no-repeat",
+            bg: "url(images/I.png) 100% 100% no-repeat",
         },
         {
             type: 'O',
@@ -472,7 +471,7 @@ var Game = {
             ],
             rows: 2,
             cols: 2,
-            bg: "url(O.png) 100% 100% no-repeat",
+            bg: "url(images/O.png) 100% 100% no-repeat",
         },
         {
             type: 'T',
@@ -482,7 +481,7 @@ var Game = {
             ],
             rows: 2,
             cols: 3,
-            bg: "url(T.png) 100% 100% no-repeat",
+            bg: "url(images/T.png) 100% 100% no-repeat",
         },
     ],
     loadImg: function(){
@@ -490,7 +489,8 @@ var Game = {
         for (var i = 0; i < this.shape.length; i++) {
             (function(){
                 var img = new Image();
-                img.src = _this.shape[i].bg.match(/\w\.png/);
+                var match = _this.shape[i].bg.match(/url\((.*\.png)\)/);
+                img.src = match[1];
             })();
         }
     },
